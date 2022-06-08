@@ -1,39 +1,29 @@
-const urlSearchParams = new URLSearchParams(window.location.search);
-const id = urlSearchParams.get("id");
+// const urlSearchParams = new URLSearchParams(window.location.search);
+// const postId = urlSearchParams.get("id");
 
 
 
 
+// var form = document.querySelector('#form2')
 
+// const createUser =async (id)=>{
 
+//     let user ={
+//         name : form.name.value,
+//         email : form.email.value,
+//         contact : form.contact.value
+//     }
 
-async function oneUser(id){
-    var form = document.querySelector('#form2')
+//     await fetch('http://localhost:5000/users/'+id,{
+//         method: 'POST',
+//         body: JSON.stringify(user),
+//         headers: { 'Content-Type': 'application/json' }
+//     })
+//     .then(response=> response.json())
+//     .then(response=> console.log(response))
 
-    const req = await fetch(`http://localhost:5000/users/${id}`,{
+//     // window.location.replace('index.html')
 
-    })
+// }
 
-    const res= await req.json()
-
-  
-    let user ={
-        name : form.name.value=res.name,
-        email : form.email.value=res.email,
-        contact : form.contact.value=res.contact
-    }
-    
-
-
-  console.log(res)
-
-  
-
-
-  
-
-}
-
-
-oneUser(id)
-
+// form.addEventListener('submit',createUser(postId))

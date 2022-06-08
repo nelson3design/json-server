@@ -1,10 +1,16 @@
 {
   "users": [
     {
-      "name": "nelson mondela cemelus delva",
-      "email": "mandeart2@gmail.com",
-      "contact": "48999856534",
+      "name": "nelson ",
+      "email": "nelsondenyeteste@gmail.com",
+      "contact": "45455454",
       "id": 1
+    },
+    {
+      "name": "lorna ",
+      "email": "lorna@gmail.com",
+      "contact": "45455454",
+      "id": 2
     }
   ]
 }
