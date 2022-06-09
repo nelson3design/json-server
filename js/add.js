@@ -14,7 +14,7 @@ const createUser =async ()=>{
         headers: { 'Content-Type': 'application/json' }
     })
 
-    window.location.replace('index.html')
+    
 
 }
 

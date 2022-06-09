@@ -7,22 +7,40 @@ var form2 = document.querySelector('#form2')
 
 document.querySelector('.update').style.display="none"
 
-const url= 'http://localhost:5000/users/'
+ const url= 'http://localhost:5000/users/'
 
-async function allUser(trem){
 
-    const response= await fetch(url)
+
+
+
+
+
+async function allUser(search){
+
+
+  let uri= 'http://localhost:5000/users/?_sort=id&_order=desc'
+if (search) {
+  uri += `&q=${search}`
+}
+
+
+
+
+    const response= await fetch(uri)
 
     const data= await response.json()
     console.log(data)
     
     const tbody = document.querySelector('#tbody')
     let template = '';
+
+
     
     data.forEach(e => {
 
         template += `
       <tr>
+      <td>${e.id}</td>
         <td>${e.name}</td>
         <td>${e.email}</td>
         <td>${e.contact}</td>
@@ -154,9 +172,11 @@ btn2.forEach((bt)=>{
 
 
 // search
-searchForm.addEventListener('submit', async (e) => {
+searchForm.btn.addEventListener('click', async (e) => {
     e.preventDefault();
-    allUser(searchForm.term.value.trim());
+    allUser(searchForm.search.value.trim());
+
+    searchForm.search.value=""
   })
   
   window.addEventListener('DOMContentLoaded', () => allUser());

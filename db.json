@@ -7,10 +7,28 @@
       "id": 1
     },
     {
-      "name": "chic",
-      "email": "chico@gmail.com",
-      "contact": "4899584844",
-      "id": 2
+      "name": "pivane",
+      "email": "pivane@gmail.com",
+      "contact": "4887878479",
+      "id": 3
+    },
+    {
+      "name": "sony",
+      "email": "sony@gmail.com",
+      "contact": "222",
+      "id": 4
+    },
+    {
+      "name": "lorna update",
+      "email": "lorna@gmail.com",
+      "contact": "48999565815",
+      "id": 5
+    },
+    {
+      "name": "overt",
+      "email": "overt@gmail.com",
+      "contact": "48445454",
+      "id": 6
     }
   ]
 }
