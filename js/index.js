@@ -5,7 +5,9 @@ const postId = urlSearchParams.get("id");
 const searchForm = document.querySelector('.search');
 var form2 = document.querySelector('#form2')
 
-const url= 'http://localhost:5000/users'
+document.querySelector('.update').style.display="none"
+
+const url= 'http://localhost:5000/users/'
 
 async function allUser(trem){
 
@@ -25,27 +27,50 @@ async function allUser(trem){
         <td>${e.email}</td>
         <td>${e.contact}</td>
        
-        <td><a class="link1">Editar</a>
-        <a class="link2">Excluir</a>
+        <td><button class="btn1" id="${e.id}">Editar</button>
+        <button class="btn2" id="${e.id}">Excluir</button>
         </td>
         
       </tr>
     `
       tbody.innerHTML=template
+  form2.btn.addEventListener('click',(e)=>{
+                e.preventDefault()
+  })
+      
 
-      const link2 = document.querySelector('.link2')
-      const link1 = document.querySelector('.link1')
+      const btn2 = document.querySelectorAll('.btn2')
+      const btn1 = document.querySelectorAll('.btn1')
 
-      link1.addEventListener('click',(event)=>{
-        const res = fetch('http://localhost:5000/users/' + e.id, {
+      
+
+      btn1.forEach((bt)=>{
+        // console.log(bt)
+     
+
+      
+
+      bt.addEventListener('click',(event)=>{
+        console.log(event.target.id)
+
+
+
+        document.querySelector('.update').style.display="block"
+
+         document.querySelector('.table').style.display="none"
+
+        
+
+        
+        const res = fetch(url + event.target.id, {
               method: 'GET'
             }).then(response=> response.json())
             .then(response=>{
-              console.log(response.id)
+            
 
-              var link=response.id
+            
 
-              console.log(event.target.link)
+             
 
               form2.name.value=response.name
               form2.email.value=response.email
@@ -62,7 +87,7 @@ async function allUser(trem){
                   contact : form2.contact.value
                       }
                   
-                        fetch('http://localhost:5000/users/'+response.id,{
+                        fetch(url+event.target.id,{
                           method: 'PUT',
                           body: JSON.stringify(user),
                           headers: { 'Content-Type': 'application/json' }
@@ -79,7 +104,7 @@ async function allUser(trem){
      })
 
     
-
+ })
     
 
 
@@ -90,18 +115,33 @@ async function allUser(trem){
 
 
 
+btn2.forEach((bt)=>{
 
 
+  
+     bt.addEventListener('click',(event)=>{
+      
+      
 
+      if(confirm('tem certeza de excluir esse usuario?')==true){
 
-
-     link2.addEventListener('click',()=>{
-        const res = fetch('http://localhost:5000/users/' + e.id, {
-              method: 'DELETE'
-            });
-            window.location.replace("/");
+        const res = fetch(url + event.target.id, {
+            method: 'DELETE'
+          }).then(response=> response.json())
+          .then(resutl=>{
+            console.log(resutl)
+          })
+      }
+     
+      
+           
          
      })
+
+
+})
+
+
 
 
 
@@ -110,58 +150,7 @@ async function allUser(trem){
 }
 
 
-// var form = document.querySelector('#form2')
 
-// const createUser =async (id)=>{
-
-   
-
-//     await fetch('http://localhost:5000/users/'+id,{
-//         method: 'GET',
-//         // body: JSON.stringify(user),
-//         headers: { 'Content-Type': 'application/json' }
-//     })
-//     .then(response=> response.json())
-//     .then(response=> {
-//       console.log(response)
-
-//       let user ={
-//         name : "nelson",
-//         email : "nelson@gmail.com",
-//         contact : "489545454545"
-//     }
-
-//       fetch('http://localhost:5000/users/'+id,{
-//         method: 'PUT',
-//         body: JSON.stringify(user),
-//         headers: { 'Content-Type': 'application/json' }
-//     }).then(response=>response.json())
-//     .then(response=>{
-
-//       console.log(response)
-       
-//     })
-
-
-
-
-
-
-
-//     })
-
-//     // window.location.replace('index.html')
-
-// }
-
-// form.addEventListener('submit',createUser(postId))
-
-
-
-
-
-
-// allUser()
 
 
 // search
